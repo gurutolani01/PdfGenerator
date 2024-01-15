@@ -1,0 +1,21 @@
+<!-- search-user.component.html -->
+
+<div class="container mt-3">
+    <h2>Search User</h2>
+    <form (ngSubmit)="searchUser()" #searchUserForm="ngForm">
+      <div class="form-group">
+        <label for="searchUsername">Username:</label>
+        <input type="text" class="form-control" id="searchUsername" name="searchUsername" [(ngModel)]="username" required>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="searchUserForm.invalid">Search User</button>
+    </form>
+  
+    <div *ngIf="userDetails">
+      <h3>User Details</h3>
+      <p><strong>Username:</strong> {{ userDetails.username }}</p>
+      <p><strong>Date of Birth:</strong> {{ userDetails.dateOfBirth | date }}</p>
+      <p><strong>Place:</strong> {{ userDetails.place }}</p>
+      <button (click)="downloadUserDetailsPDF()" class="btn btn-success">Download as PDF</button>
+    </div>
+  </div>
+  
